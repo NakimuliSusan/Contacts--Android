@@ -24,22 +24,43 @@ class AddContactActivity : AppCompatActivity() {
         }
     }
     fun validateAddContact () {
-        var name  = binding.etName.text.toString()
-        var email  = binding.etEmail.text.toString()
-        var address  = binding.etAddress.text.toString()
-        var phonenumber  = binding.etPhoneNumber.text.toString()
+        var name = binding.etName.text.toString()
+        var email = binding.etEmail.text.toString()
+        var address = binding.etAddress.text.toString()
+        var phonenumber = binding.etPhoneNumber.text.toString()
 
         // validate form
+        var error = false
 
-        val contact = Contact(
-            contactId = 0,
-            name = name,
-            phoneNumber = phonenumber,
-            email = email,
-            address = address,
-            image = ""
-        )
-        contactsViewModel.saveContact(contact)
+        if (name.isBlank()) {
+            error = true
+            binding.TilName.error = "name is required"
+        }
+        if (email.isBlank()) {
+            error = true
+            binding.tilemail.error = " Email is required"
+        }
+        if (address.isBlank()) {
+            error = true
+            binding.tiladdress.error = "Address is required"
+        }
+        if (phonenumber.isBlank()) {
+            error = true
+            binding.tilPhoneNumber.error = "PhoneNumber is required"
+        }
+
+        if (!error) {
+
+            val contact = Contact(
+                contactId = 0,
+                name = name,
+                phoneNumber = phonenumber,
+                email = email,
+                address = address,
+                image = ""
+            )
+            contactsViewModel.saveContact(contact)
+        }
     }
 
 }
