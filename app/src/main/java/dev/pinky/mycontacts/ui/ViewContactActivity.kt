@@ -1,10 +1,11 @@
-package dev.pinky.mycontacts
+package dev.pinky.mycontacts.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.squareup.picasso.Picasso
+import dev.pinky.mycontacts.R
 import dev.pinky.mycontacts.databinding.ActivityViewContactBinding
 
 class ViewContactActivity : AppCompatActivity() {
@@ -37,7 +38,7 @@ class ViewContactActivity : AppCompatActivity() {
         Toast.makeText(this, "$name : $email", Toast.LENGTH_LONG).show()
 
         binding.imgBack.setOnClickListener {
-            val  intent = Intent(this,MainActivity::class.java)
+            val  intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }

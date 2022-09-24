@@ -1,14 +1,13 @@
-package dev.pinky.mycontacts
+package dev.pinky.mycontacts.ui
 
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import dev.pinky.mycontacts.models.Contact
+import dev.pinky.mycontacts.R
 import dev.pinky.mycontacts.databinding.ContactListItemBinding
 
 class ContactsRvAdapter (var contactList : List<Contact>):
@@ -38,7 +37,7 @@ RecyclerView.Adapter<ContactViewHolder> ()
              Toast.makeText(context, "You have clicked on ${currentContact.name}' image", Toast.LENGTH_SHORT).show()
           }
         holder.binding.cvContact.setOnClickListener {
-            val intent = Intent(context,ViewContactActivity::class.java)
+            val intent = Intent(context, ViewContactActivity::class.java)
             intent.putExtra("NAME", currentContact.name)
             intent.putExtra("EMAIL",currentContact.email)
             intent.putExtra("PHONENUMBER", currentContact.phoneNumber)
