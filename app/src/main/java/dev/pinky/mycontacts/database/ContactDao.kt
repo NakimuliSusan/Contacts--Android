@@ -11,8 +11,10 @@ import dev.pinky.mycontacts.models.Contact
 interface ContactDao {
     @Insert(onConflict =  OnConflictStrategy.REPLACE)
     fun insertContact (contact : Contact)
+
     @Query("SELECT * FROM  contacts")
     fun getAllContacts () : LiveData<List<Contact>>
+
     @Query("select * FROM  contacts WHERE  contactId = :contactId")
     fun getContactById (contactId : Int) : LiveData<Contact>
 }

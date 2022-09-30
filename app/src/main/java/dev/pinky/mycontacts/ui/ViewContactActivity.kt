@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import com.squareup.picasso.Picasso
 import dev.pinky.mycontacts.R
 import dev.pinky.mycontacts.databinding.ActivityViewContactBinding
+import dev.pinky.mycontacts.viewmodel.ContactsViewModel
 
 class ViewContactActivity : AppCompatActivity() {
     lateinit var binding : ActivityViewContactBinding
@@ -16,6 +18,7 @@ class ViewContactActivity : AppCompatActivity() {
         setContentView(binding.root)
         getExtras()
     }
+
 
     fun getExtras () {
         val extras = intent.extras
@@ -27,14 +30,14 @@ class ViewContactActivity : AppCompatActivity() {
         binding.tvphonenumber.text = phonenumber
         val address = extras?.getString("ADDRESS","")
         binding.tvaddress.text = address
-        val image = extras?.getString("IMAGE","")
-        Picasso.get()
-            .load(image)
-            .placeholder(R.drawable.ic_baseline_person_24)
-            .error(R.drawable.ic_baseline_error_outline_24)
-            .resize(350,350)
-            .centerCrop()
-            .into(binding.imgProfile)
+//        val image = extras?.getString("IMAGE","")
+//        Picasso.get()
+//            .load(image)
+//            .placeholder(R.drawable.ic_baseline_person_24)
+//            .error(R.drawable.ic_baseline_error_outline_24)
+//            .resize(350,350)
+//            .centerCrop()
+//            .into(binding.imgProfile)
         Toast.makeText(this, "$name : $email", Toast.LENGTH_LONG).show()
 
         binding.imgBack.setOnClickListener {

@@ -11,12 +11,17 @@ class ContactsRepository {
     val database = ContactDb.getDatabase(MyContacts.appContext)
 
 
-    suspend fun  saveContact (contact: Contact) {
+    suspend fun saveContact (contact: Contact) {
         withContext(Dispatchers.IO) {
             database.contactDao().insertContact(contact)
         }
     }
     fun getContactById(contactId: Int): LiveData<Contact> {
         return database.contactDao().getContactById(contactId)
+    }
+
+    fun fetchContacts():LiveData<List<Contact>> {
+        return database.contactDao().getAllContacts()
+
     }
 }

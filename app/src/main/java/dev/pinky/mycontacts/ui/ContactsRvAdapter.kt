@@ -25,13 +25,14 @@ RecyclerView.Adapter<ContactViewHolder> ()
         holder.binding.tvPhoneNumber.text = currentContact.phoneNumber
         holder.binding.tvEmail.text = currentContact.email
         holder.binding.tvAddress.text = currentContact.address
-        Picasso.get()
-            .load(currentContact.image)
-            .placeholder(R.drawable.ic_baseline_person_24)
-            .error(R.drawable.ic_baseline_error_outline_24)
-            .resize(350,350)
-            .centerCrop()
-            .into(holder.binding.ivContact) // instance to  get an object
+//        holder.binding.ivContact= currentContact.image
+//        Picasso.get()
+//            .load(currentContact.image)
+//            .placeholder(R.drawable.ic_baseline_person_24)
+//            .error(R.drawable.ic_baseline_error_outline_24)
+//            .resize(350,350)
+//            .centerCrop()
+//            .into(holder.binding.ivContact) // instance to  get an object
           val context = holder.itemView.context
           holder.binding.ivContact.setOnClickListener{
              Toast.makeText(context, "You have clicked on ${currentContact.name}' image", Toast.LENGTH_SHORT).show()
